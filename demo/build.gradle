@@ -1,0 +1,48 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+
+
+group = 'com.diana.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+//mainClassName= 'com.diana.test.demo.Main'
+
+configurations {
+    developmentOnly
+    providedRuntime
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+apply plugin: 'war'
+
+
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spring.io/snapshot' }
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    runtimeOnly 'org.postgresql:postgresql'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+//    testImplementation 'org.springframework.security:spring-security-test'
+    
+
+    providedCompile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '9.0.27'
+    providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+
+
+
+}
