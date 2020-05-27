@@ -14,6 +14,7 @@ public class IndexPageController {
     @RequestMapping(method = RequestMethod.GET, value = "/fuck")
     public String index() {
         return "product.html";
+        
     }
 
 
